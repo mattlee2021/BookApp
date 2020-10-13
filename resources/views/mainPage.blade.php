@@ -2,11 +2,13 @@
 
 <html>
     <head>
-        <title> App Name - @yield('title') </title>
+        @include('components.head')
     </head>
 
     <!-- Book and Author Inputs --> 
-    <header></header>  
+    <header>
+    @include('components.header')
+    </header>  
 
     <section></section>
 
