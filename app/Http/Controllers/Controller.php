@@ -10,4 +10,12 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    function index() {
+        $data = DB::table('books')->get(); 
+        View::share('data', $data);
+        return view('mainPage', ['data'=>$data]);
+    }
+
+
 }

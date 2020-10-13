@@ -8,9 +8,13 @@
     <!-- Book and Author Inputs --> 
     <header>
     @include('components.header')
+    
     </header>  
 
-    <section></section>
+    <section>
+    @yield('section content')
+    
+    </section>
 
     <aside> </aside>
 

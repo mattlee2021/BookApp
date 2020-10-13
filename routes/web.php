@@ -12,10 +12,14 @@ use App\Http\Controllers\postBook;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
+
 */
 
 Route::get('/', function () {
-    return view('mainPage');
+    return view('mainpage');
 });
 
+
 Route::post('submit', [postBook::class, 'saveData']);
+
+Route::get('list', 'App\Http\Controllers\updateAuthor@index');
