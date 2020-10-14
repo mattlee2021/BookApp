@@ -4,11 +4,13 @@
 <tr>
     <th> Book Title </th>
     <th> Author </th>
+    <th> Delete This Book! </th>
 </tr>
     @foreach($data as $bookData) 
 <tr> 
     <td> {{$bookData->Title}} </td>
     <td> {{$bookData->Author}}</td>
+    <td> <a href="/delete/{{$bookData->id}}"> <button> Delete </button> </a> <td>
 </tr>
     @endforeach
 

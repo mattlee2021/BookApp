@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\postBook;
+//use App\Http\Controllers\postBook;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,13 +13,18 @@ use App\Http\Controllers\postBook;
 | contains the "web" middleware group. Now create something great!
 |
 
+
 */
 
-Route::get('/', function () {
-    return view('mainpage');
-});
+// Format is Route::get('web extension','pathToController@ControllerMethod);
+
+Route::get('/','App\Http\Controllers\postBook@viewData')->name('mainRoute');
 
 
-Route::post('submit', [postBook::class, 'saveData']);
+Route::post('/submit', 'App\Http\Controllers\postBook@addData');
+Route::get('/delete/{id}','App\Http\Controllers\postBook@deleteUser');
 
-Route::get('list', 'App\Http\Controllers\updateAuthor@index');
+
+
+
+//Route::get('list', 'App\Http\Controllers\updateAuthor@index');
