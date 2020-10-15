@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//use App\Http\Controllers\postBook;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +18,18 @@ use Illuminate\Support\Facades\Route;
 
 // Format is Route::get('web extension','pathToController@ControllerMethod);
 
-Route::get('/','App\Http\Controllers\postBook@viewData')->name('mainRoute');
+//Route::get('/','App\Http\Controllers\BookController@viewData')->name('mainRoute');
+//Route::post('/submit', 'App\Http\Controllers\BookController@addData');
+//Route::get('/delete/{id}','App\Http\Controllers\BookController@deleteUser');
+//Route::get('/edit/{id}','App\Http\Controllers\BookController@editAuthor');
+//Route::post('/edit', 'App\Http\Controllers\BookController@update');
+
+Route::get('/', [BookController::class, 'viewData'])->name('mainRoute');
+Route::post('/submit', [BookController::class, 'addData']);
+Route::get('/delete/{id}', [BookController::class, 'deleteUser']);
+Route::get('/edit/{id}', [BookController::class, 'editAuthor']);
+Route::post('/edit', [BookController::class, 'update']);
 
 
-Route::post('/submit', 'App\Http\Controllers\postBook@addData');
-Route::get('/delete/{id}','App\Http\Controllers\postBook@deleteUser');
 
 
-
-
-//Route::get('list', 'App\Http\Controllers\updateAuthor@index');

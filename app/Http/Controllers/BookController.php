@@ -9,17 +9,20 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Models\Book;
 
-class postBook extends Controller
+//postBook
+
+class BookController extends Controller
 {
     function fetchData(){
-        $data = DB::table('books')->get(); 
+        //$data = DB::table('books')->get(); 
+        $data=Book::all();
         return $data;
     }
 
     function addData(Request $request) {
         //print_r($request -> input());
         $book = new Book;
-        $book ->Title = $request->book;
+        $book->Title = $request->book;
         $book->Author = $request->author;
         $book->save();
         //Added Code from updateAuthor
@@ -36,9 +39,22 @@ class postBook extends Controller
     }
 
      function deleteUser($id){
-
-        DB::table('books')->where('id', '=', $id)->delete();
-        $data=$this->fetchData();
+        $data=Book::find($id);
+        $data->delete();
         return redirect()->route('mainRoute');
       }
+
+    function editAuthor($id){
+
+        $dataToUpdate=Book::find($id);
+        return view('editAuthor', ['data'=>$dataToUpdate]);
+    }
+
+    function update(Request $request){
+        $dataToUpdate=Book::find($request->id);
+        $dataToUpdate->Author=$request->authorEdit;
+        $dataToUpdate->save();
+        return redirect()->route('mainRoute');
+
+    }
 }
