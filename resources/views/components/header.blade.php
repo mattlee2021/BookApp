@@ -7,7 +7,16 @@
 <br><br>
 <input type="text" name="author" placeholder="Author of Book">
 <br><br>
-<button type="submit"> Add to List </button>
+<button type="submit" name="addToList"> Add to List </button>
+</form>
+
+<br><br>
+
+<form action="bookSearch" method="GET" > 
+@csrf
+<input type="text" name="bookLookup" placeholder="Look up a Book">
+<br><br>
+<button type="submit" name="searchBook"> Search For Book </button> 
 </form>
 
 

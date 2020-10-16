@@ -21,6 +21,7 @@ class BookController extends Controller
 
     function addData(Request $request) {
         //print_r($request -> input());
+        if ($request->has('addToList')) {
         $book = new Book;
         $book->Title = $request->book;
         $book->Author = $request->author;
@@ -30,6 +31,7 @@ class BookController extends Controller
         View::share('data', $data);
         //return view('submittedData', ['data'=>$data]);
         return redirect()->route('mainRoute');
+        }
     }
 
     function viewData(){
@@ -55,6 +57,19 @@ class BookController extends Controller
         $dataToUpdate->Author=$request->authorEdit;
         $dataToUpdate->save();
         return redirect()->route('mainRoute');
-
     }
+
+    function bookSearch(Request $bookName){
+        if ($bookName->has('searchBook')) {
+            //$rowToReturn=DB::table('books')->where('Title', '=', $bookName)->get();
+            $lookup=$bookName->bookLookup;
+            $rowToReturn=Book::where('Title', '=', $lookup)->get();
+            //return $rowToReturn;
+            return view('searchedBooks', ['data'=>$rowToReturn]); 
+            
+        }
+        //Error Handling
+    }
+
+
 }

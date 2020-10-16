@@ -29,6 +29,7 @@ Route::post('/submit', [BookController::class, 'addData']);
 Route::get('/delete/{id}', [BookController::class, 'deleteUser']);
 Route::get('/edit/{id}', [BookController::class, 'editAuthor']);
 Route::post('/edit', [BookController::class, 'update']);
+Route::get('/bookSearch',[BookController::class, 'bookSearch']);
 
 
 
