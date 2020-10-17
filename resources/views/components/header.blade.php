@@ -19,6 +19,15 @@
 <button type="submit" name="searchBook"> Search For Book </button> 
 </form>
 
+<br><br>
+
+<form action="authorSearch" method="GET" > 
+@csrf
+<input type="text" name="AuthorLookup" placeholder="Look up an Author">
+<br><br>
+<button type="submit" name="searchAuthor"> Search For Author </button> 
+</form>
+
 
 <style>
 

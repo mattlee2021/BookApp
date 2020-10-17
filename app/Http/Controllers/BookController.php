@@ -66,10 +66,15 @@ class BookController extends Controller
             $rowToReturn=Book::where('Title', '=', $lookup)->get();
             //return $rowToReturn;
             return view('searchedBooks', ['data'=>$rowToReturn]); 
-            
         }
-        //Error Handling
     }
-
-
+        //Error Handling
+    function authorSearch(Request $authorName){
+        if ($authorName->has('searchAuthor')) {   //Button name
+            $lookup=$authorName->AuthorLookup;
+            $rowToReturn=Book::where('Author', '=', $lookup)->get();      
+            
+            return view('searchedBooks', ['data'=>$rowToReturn]); 
+            }
+    }
 }

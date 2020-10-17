@@ -30,6 +30,7 @@ Route::get('/delete/{id}', [BookController::class, 'deleteUser']);
 Route::get('/edit/{id}', [BookController::class, 'editAuthor']);
 Route::post('/edit', [BookController::class, 'update']);
 Route::get('/bookSearch',[BookController::class, 'bookSearch']);
+Route::get('/authorSearch',[BookController::class, 'authorSearch']);
 
 
 
