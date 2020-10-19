@@ -31,6 +31,8 @@ Route::get('/edit/{id}', [BookController::class, 'editAuthor']);
 Route::post('/edit', [BookController::class, 'update']);
 Route::get('/bookSearch',[BookController::class, 'bookSearch']);
 Route::get('/authorSearch',[BookController::class, 'authorSearch']);
+Route::get('/bookSort',[BookController::class, 'bookSort'])->name('bookSort');
+Route::get('/authorSort',[BookController::class, 'authorSort'])->name('authorSort');
 
 
 

@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        @include('components.head')
+    @include('components.head')
     </head>
 
     <!-- Book and Author Inputs --> 
@@ -18,6 +18,8 @@
 
     <aside> </aside>
 
-    <footer></footer>
+    <footer>
+    @include('components.footer')
+    </footer>
         
 </html>

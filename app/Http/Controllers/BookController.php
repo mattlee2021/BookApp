@@ -43,6 +43,7 @@ class BookController extends Controller
      function deleteUser($id){
         $data=Book::find($id);
         $data->delete();
+        //return view('submittedData', ['data'=>$data]);
         return redirect()->route('mainRoute');
       }
 
@@ -68,7 +69,7 @@ class BookController extends Controller
             return view('searchedBooks', ['data'=>$rowToReturn]); 
         }
     }
-        //Error Handling
+        
     function authorSearch(Request $authorName){
         if ($authorName->has('searchAuthor')) {   //Button name
             $lookup=$authorName->AuthorLookup;
@@ -77,4 +78,22 @@ class BookController extends Controller
             return view('searchedBooks', ['data'=>$rowToReturn]); 
             }
     }
+
+    function bookSort(Request $request) { 
+            $dataSorted=DB::table('books')->orderBy('Title','asc')->get();
+            //View::share('data', $dataSorted);
+            //return view('submittedData', ['data'=>$dataSorted]);
+            //return redirect()->route('mainRoute');
+            return view('searchedBooks', ['data'=>$dataSorted]);
+            //return $dataSorted;
+    }
+
+    function authorSort(Request $request) { 
+        $dataSorted=DB::table('books')->orderBy('Author','asc')->get();
+        //View::share('data', $dataSorted);
+        //return view('submittedData', ['data'=>$dataSorted]);
+        //return redirect()->route('mainRoute');
+        return view('searchedBooks', ['data'=>$dataSorted]);
+        //return $dataSorted;
+}
 }
