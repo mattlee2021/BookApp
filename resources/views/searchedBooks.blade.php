@@ -1,4 +1,4 @@
-
+@extends('components.head')
 <table>
 <tr>
     <th> Book Title </th>

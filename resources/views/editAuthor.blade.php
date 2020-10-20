@@ -1,4 +1,5 @@
-<h1> Update Author for Book Titled {{$data['Title']}}</h1>
+@extends('components.head')
+<h1 id="TitleMain"> Update Author for Book Titled {{$data['Title']}}</h1>
 <form action="/edit" method="POST">
     @csrf
     <input type="hidden" name="id" value="{{$data['id']}}" >

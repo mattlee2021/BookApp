@@ -1,4 +1,5 @@
-<h1 id="Title"> Enter a Book and Author into the List </h1>
+
+<h1 id="TitleMain"> A Book List </h1>
 
 
 <form action="submit" method="POST" >
@@ -12,7 +13,7 @@
 
 <br><br>
 
-<form action="bookSearch" method="GET" > 
+<form action="bookSearch" method="GET" id="bookLook"> 
 @csrf
 <input type="text" name="bookLookup" placeholder="Look up a Book">
 <br><br>
@@ -21,7 +22,7 @@
 
 <br><br>
 
-<form action="authorSearch" method="GET" > 
+<form action="authorSearch" method="GET" id="authorLook"> 
 @csrf
 <input type="text" name="AuthorLookup" placeholder="Look up an Author">
 <br><br>
@@ -29,11 +30,4 @@
 </form>
 
 
-<style>
 
-#Title {
-    color: green;
-    text-align: center;
-}
-
-</style>

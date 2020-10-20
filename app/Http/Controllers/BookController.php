@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Models\Book;
 
-//postBook
 
 class BookController extends Controller
 {
@@ -20,18 +19,24 @@ class BookController extends Controller
     }
 
     function addData(Request $request) {
-        //print_r($request -> input());
         if ($request->has('addToList')) {
-        $book = new Book;
-        $book->Title = $request->book;
-        $book->Author = $request->author;
-        $book->save();
-        //Added Code from updateAuthor
-        $data = $this->fetchData();
-        View::share('data', $data);
-        //return view('submittedData', ['data'=>$data]);
-        return redirect()->route('mainRoute');
-        }
+            $validatedData=$request->validate([
+                'book' => ['required'],
+                'author' => ['required']
+            ]); // Add pop up window 
+            $book = new Book;
+            $book->Title = $validatedData['book'];
+            $book->Author = $validatedData['author'];
+            $book->save();
+            //Added Code from updateAuthor
+            $data = $this->fetchData();
+            View::share('data', $data);
+            //return view('submittedData', ['data'=>$data]);
+            return redirect()->route('mainRoute');
+            //return $request;
+            //return view('Error');
+            }
+
     }
 
     function viewData(){
@@ -48,24 +53,25 @@ class BookController extends Controller
       }
 
     function editAuthor($id){
-
         $dataToUpdate=Book::find($id);
         return view('editAuthor', ['data'=>$dataToUpdate]);
     }
 
     function update(Request $request){
         $dataToUpdate=Book::find($request->id);
-        $dataToUpdate->Author=$request->authorEdit;
+        $validatedData = $request->validate([
+            'authorEdit' => ['required']
+        ]);
+        //$dataToUpdate->Author=$request->authorEdit;
+        $dataToUpdate->Author=$validatedData['authorEdit'];
         $dataToUpdate->save();
         return redirect()->route('mainRoute');
     }
 
     function bookSearch(Request $bookName){
         if ($bookName->has('searchBook')) {
-            //$rowToReturn=DB::table('books')->where('Title', '=', $bookName)->get();
             $lookup=$bookName->bookLookup;
             $rowToReturn=Book::where('Title', '=', $lookup)->get();
-            //return $rowToReturn;
             return view('searchedBooks', ['data'=>$rowToReturn]); 
         }
     }
@@ -96,4 +102,39 @@ class BookController extends Controller
         return view('searchedBooks', ['data'=>$dataSorted]);
         //return $dataSorted;
 }
+// 3 Different cases and if statements 
+
+    private function toCSV(array $dataToExport){
+            
+            ob_start();
+            $df = fopen("php://output", 'w');
+            fputcsv($df, array_keys(reset($dataToExport)));
+            foreach ($dataToExport as $row) {
+                fputcsv($df, $row);
+            }
+            fclose($df);
+            header('Content-Type: application/csv');
+            header('Content-Disposition: attachment; filename="bookListCSV.csv"');
+            
+    }
+
+    function exportCSV_Both() {
+            $bothData=Book::all('Title','Author');
+            $data=$bothData->toArray();
+            $this->toCSV($data);
+}
+
+    function exportCSV_Auth() {
+            $authData=Book::all('Author');
+            $data=$authData->toArray();
+            $this->toCSV($data);
+    }
+
+    function exportCSV_Book(){
+            $bookData=Book::all('Title');
+            $data=$bookData->toArray();
+            $this->toCSV($data);
+
+    }
+
 }
