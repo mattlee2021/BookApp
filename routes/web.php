@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\exportController;
+use App\Http\Controllers\searchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,13 +31,19 @@ Route::post('/submit', [BookController::class, 'addData']);
 Route::get('/delete/{id}', [BookController::class, 'deleteUser']);
 Route::get('/edit/{id}', [BookController::class, 'editAuthor']);
 Route::post('/edit', [BookController::class, 'update']);
-Route::get('/bookSearch',[BookController::class, 'bookSearch']);
-Route::get('/authorSearch',[BookController::class, 'authorSearch']);
 Route::get('/bookSort',[BookController::class, 'bookSort'])->name('bookSort');
 Route::get('/authorSort',[BookController::class, 'authorSort'])->name('authorSort');
-Route::get('/exportCSV_Both',[BookController::class, 'exportCSV_Both'])->name('exportCSV_Both');
-Route::get('/exportCSV_Auth',[BookController::class, 'exportCSV_Auth'])->name('exportCSV_Auth');
-Route::get('/exportCSV_Book',[BookController::class, 'exportCSV_Book'])->name('exportCSV_Book');
+
+Route::get('/bookSearch',[searchController::class, 'bookSearch']);
+Route::get('/authorSearch',[searchController::class, 'authorSearch']);
+
+
+Route::get('/exportCSV_Both',[exportController::class, 'exportCSV_Both'])->name('exportCSV_Both');
+Route::get('/exportCSV_Auth',[exportController::class, 'exportCSV_Auth'])->name('exportCSV_Auth');
+Route::get('/exportCSV_Book',[exportController::class, 'exportCSV_Book'])->name('exportCSV_Book');
+Route::get('/exportXML_Both',[exportController::class, 'exportXML_Both'])->name('exportXML_Both');
+Route::get('/exportXML_Auth',[exportController::class, 'exportXML_Auth'])->name('exportXML_Auth');
+Route::get('/exportXML_Book',[exportController::class, 'exportXML_Book'])->name('exportXML_Book');
 
 
 

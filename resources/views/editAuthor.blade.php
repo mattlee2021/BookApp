@@ -3,6 +3,7 @@
 <form action="/edit" method="POST">
     @csrf
     <input type="hidden" name="id" value="{{$data['id']}}" >
-    <input type="text" name="authorEdit" placeHolder= "Update Author Name"> <br><br>
-
+    <input type="text" name="authorEdit" placeHolder= "Update Author Name"> 
+    <span id="error">@error('authorEdit'){{$message}}@enderror</span>
+    <br><br>
     <button type="submit"> Update </button>
