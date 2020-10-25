@@ -6,29 +6,31 @@ use Illuminate\Support\Facades\Schema;
 
 class AddAuthorAndTitleToBookTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::table('books', function (Blueprint $table) {
-            $table->string('Author');
-            $table->string('Title');
-        });
-    }
+    /// Unused File. File was not deleted because an error is thrown by php artisan 
+/**
+* Run the migrations.
+*
+* @return void
+*/
+public function up()
+{
+/*
+Schema::table('books', function (Blueprint $table) {
+$table->string('Author');
+$table->string('Title');
+});
+*/
+}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('books', function (Blueprint $table) {
-            $table->dropColumn('Author');
-            $table->dropColumn('Title');
-        });
-    }
+/**
+* Reverse the migrations.
+*
+* @return void
+*/
+public function down()
+{
+/*
+Schema::drop('books');
+*/
+}
 }

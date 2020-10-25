@@ -7,7 +7,8 @@ use App\Models\Book;
 
 class searchController extends Controller
 {
-    function bookSearch(Request $bookName){
+    function bookSearch(Request $bookName)
+    {
         if ($bookName->has('searchBook')) {
             $validatedSearch=$bookName->validate([
                 'bookLookup' => ['required']
@@ -18,7 +19,8 @@ class searchController extends Controller
         }
     }
         
-    function authorSearch(Request $authorName){
+    function authorSearch(Request $authorName)
+    {
         if ($authorName->has('searchAuthor')) {   //Button name
             $validatedSearch=$authorName->validate([
                 'AuthorLookup' => ['required']
@@ -26,6 +28,6 @@ class searchController extends Controller
             $lookup=$validatedSearch['AuthorLookup'];
             $rowToReturn=Book::where('Author', '=', $lookup)->get();      
             return view('searchedBooks', ['data'=>$rowToReturn]); 
-            }
+        }
     }
 }

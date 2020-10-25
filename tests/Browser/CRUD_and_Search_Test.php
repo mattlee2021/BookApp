@@ -6,13 +6,21 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class CRUDTest extends DuskTestCase
+class CRUD_and_Search_Test extends DuskTestCase
 {
-    /**
-     * A Dusk test example.
-     *
-     * @return void
-     */
+    /** This method clears out the database table before running the tests */
+    protected static $migrationRun=false;
+
+    public function setUp():void 
+    {
+        parent::setUp();
+        if(!static::$migrationRun) {
+            $this->artisan('migrate:refresh');
+            static::$migrationRun=true;
+        }
+    }
+    
+
     public function test_insert_book_and_author()
     {
         $this->browse(function (Browser $browser) {
@@ -36,11 +44,6 @@ class CRUDTest extends DuskTestCase
                     ->assertPathBeginsWith('/bookSearch');
         });
     }
-
-    public function test_edit_author(){
-        // Search for press by certain row
-    }
-
     public function test_search_by_author()
     {
         $this->browse(function (Browser $browser) {
@@ -53,17 +56,41 @@ class CRUDTest extends DuskTestCase
         });
     }
 
-    public function test_delete_data(){
-        // Search for press by certain row
+    public function test_edit_author()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/')
+                    ->press('Edit Author')
+                    ->assertPathBeginsWith('/edit')
+                    ->type('authorEdit', 'Author Edited Matt')
+                    ->press('Update')
+                    ->assertPathIs('/')
+                    ->assertSee('Book by Matt')
+                    ->assertSee('Author Edited Matt')
+                    ->assertDontSee('Author Original Matt');
+        });
     }
 
-    public function test_download_files(){
+
+    public function test_download_files()
+    {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                     ->press('Export Data to CSV with Author and Title')
                     ->press('Export Data to XML with Author and Title')
                     ->assertPathIs('/');
         });
+    }
+
+    public function test_delete_data()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/')
+                    ->press('Delete This Entry')
+                    ->assertDontSee('Book by Matt')
+                    ->assertDontSee('Author Edited Matt')
+                    ->assertPathIs('/');
+        }); 
     }
 
 

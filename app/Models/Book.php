@@ -14,22 +14,22 @@ class Book extends Model
     use HasFactory;
     protected $table = "books";
 
-    public function up(){
+    /*Author and Book Title columns were 
+    added in database/migration/2020_10_12_043736_create_books_table.php
+    */
+    
+    public function up()
+    {
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-
         });
-
-    //Author and Book Title columns were added in migrations 2020_10_12_0500
     
-    function deleteData($id){
-        DB::table('books')->where('id', '=', $id)->delete();
     }
 
-    
-
-
+    public function deleteData($id)
+    {
+        DB::table('books')->where('id', '=', $id)->delete();
     }
 
     public function down()
