@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BookController;
+use App\Http\Controllers\CRUDController;
 use App\Http\Controllers\exportController;
 use App\Http\Controllers\searchController;
+use App\Http\Controllers\sortController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,13 +27,14 @@ use App\Http\Controllers\searchController;
 //Route::get('/edit/{id}','App\Http\Controllers\BookController@editAuthor');
 //Route::post('/edit', 'App\Http\Controllers\BookController@update');
 
-Route::get('/', [BookController::class, 'viewData'])->name('mainRoute');
-Route::post('/submit', [BookController::class, 'addData']);
-Route::get('/delete/{id}', [BookController::class, 'deleteUser']);
-Route::get('/edit/{id}', [BookController::class, 'editAuthor']);
-Route::post('/edit', [BookController::class, 'update']);
-Route::get('/bookSort',[BookController::class, 'bookSort'])->name('bookSort');
-Route::get('/authorSort',[BookController::class, 'authorSort'])->name('authorSort');
+Route::get('/', [CRUDController::class, 'viewData'])->name('mainRoute');
+Route::post('/submit', [CRUDController::class, 'addData']);
+Route::get('/delete/{id}', [CRUDController::class, 'deleteUser']);
+Route::get('/edit/{id}', [CRUDController::class, 'editAuthor']);
+Route::post('/edit', [CRUDController::class, 'update']);
+
+Route::get('/bookSort',[sortController::class, 'bookSort'])->name('bookSort');
+Route::get('/authorSort',[sortController::class, 'authorSort'])->name('authorSort');
 
 Route::get('/bookSearch',[searchController::class, 'bookSearch']);
 Route::get('/authorSearch',[searchController::class, 'authorSearch']);
