@@ -8,6 +8,9 @@ To run the application,
     - Setting up the .env file can also be tricky. Make sure your DB_USERNAME=homestead and DB_PASSWORD=secret. 
     - Note, you can run either `php artisan migrate` or `php artisan migrate:refresh` for part 10. 
  - Lastly, run `php artisan serve` and go to the url given from the terminal.  
+# Testing
+When running tests, you must have two terminal windows open. One terminal window will be running the application via `php artisan serve`. The other terminal window should cd into the project folder and run `php artisan dusk`. Running `php artisan dusk` in an IDE terminal window will not work because your database is set up on your vagrant machine. 
+
  # Photos of Application 
  ![image](https://user-images.githubusercontent.com/60365163/97124669-657f8d00-1707-11eb-9a34-15e6d07114f3.png)
  ![image](https://user-images.githubusercontent.com/60365163/97124697-7a5c2080-1707-11eb-8bd3-da0675d61154.png)
