@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Models\Book;
-
 
 class CRUDController extends Controller
 {
     function viewData()
     {
         $data = Book::all();
-        return view('submittedData', ['data'=>$data]);
+        return view('mainPage', ['data'=>$data]);
     }
-    
     
     function addData(Request $request) 
     {
@@ -36,13 +33,12 @@ class CRUDController extends Controller
 
     }
 
-     function deleteUser($id)
-     {
+    function deleteUser($id)
+    {
         $data=Book::find($id);
         $data->delete();
-        //return view('submittedData', ['data'=>$data]);
         return redirect()->route('mainRoute');
-      }
+    } 
 
     function editAuthor($id)
     {
@@ -56,7 +52,6 @@ class CRUDController extends Controller
         $validatedData = $request->validate([
             'authorEdit' => ['required']
         ]);
-        //$dataToUpdate->Author=$request->authorEdit;
         $dataToUpdate->Author=$validatedData['authorEdit'];
         $dataToUpdate->save();
         return redirect()->route('mainRoute');

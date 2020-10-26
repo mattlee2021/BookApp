@@ -31,7 +31,6 @@ class sortByAuthorTest extends DuskTestCase
         }
     }
 
-
     public function test_sort_by_Author_insert_book_and_author1()
     {
         $this->browse(function (Browser $browser) {

@@ -21,7 +21,7 @@ class searchController extends Controller
         
     function authorSearch(Request $authorName)
     {
-        if ($authorName->has('searchAuthor')) {   //Button name
+        if ($authorName->has('searchAuthor')) {   
             $validatedSearch=$authorName->validate([
                 'AuthorLookup' => ['required']
             ]);

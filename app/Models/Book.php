@@ -14,9 +14,10 @@ class Book extends Model
     use HasFactory;
     protected $table = "books";
 
-    /*Author and Book Title columns were 
-    added in database/migration/2020_10_12_043736_create_books_table.php
-    */
+    /**
+     * Author and Book Title columns were 
+     * added in database/migration/2020_10_12_043736_create_books_table.php
+     */
     
     public function up()
     {

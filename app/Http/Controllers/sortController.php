@@ -12,12 +12,12 @@ class sortController extends Controller
     { 
         $dataSorted=DB::table('books')->orderBy('Title','asc')->get();
         View::share('data', $dataSorted);
-        return view('submittedData', ['data'=>$dataSorted]);
+        return view('mainPage', ['data'=>$dataSorted]);
     }
 
     function authorSort(Request $request) 
     { 
-    $dataSorted=DB::table('books')->orderBy('Author','asc')->get(); 
-    return view('submittedData', ['data'=>$dataSorted]);
+        $dataSorted=DB::table('books')->orderBy('Author','asc')->get(); 
+        return view('mainPage', ['data'=>$dataSorted]);
     }
 }

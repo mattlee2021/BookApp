@@ -20,7 +20,6 @@ class CRUD_and_Search_Test extends DuskTestCase
         }
     }
     
-
     public function test_insert_book_and_author()
     {
         $this->browse(function (Browser $browser) {
@@ -71,7 +70,7 @@ class CRUD_and_Search_Test extends DuskTestCase
         });
     }
 
-
+    //This function will download the CSV into the project folder
     public function test_download_files()
     {
         $this->browse(function (Browser $browser) {

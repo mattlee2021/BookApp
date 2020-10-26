@@ -12,7 +12,7 @@
     </header>  
 
     <section>
-    @yield('section content')
+    @include('components.section')
     
     </section>
 

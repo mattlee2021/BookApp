@@ -7,3 +7,4 @@
     <span id="error">@error('authorEdit'){{$message}}@enderror</span>
     <br><br>
     <button type="submit"> Update </button>
+</form>

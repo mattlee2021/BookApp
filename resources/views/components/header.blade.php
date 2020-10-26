@@ -1,7 +1,4 @@
-
 <h1 id="TitleMain"> A Book List </h1>
-
-
 
 <form action="submit" method="POST" >
 @csrf
