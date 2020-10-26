@@ -2,9 +2,11 @@
 This web app allows a user to add books to the user's own list. There are features such as searching for a book in your list by author or book title, sorting the list alphabetically by author or book title, exporting your list to a CSV or XML file, etc. The web app was built using Laravel 8.
 # Installation 
 To run the application, 
- - First, download Laravel Homestead - https://laravel.com/docs/8.x/installation. I found this youtube tutorials helpful -https://www.youtube.com/watch?v=b3HLNJvVzNo&ab_channel=QuentinWattTutorials (watch parts 1-4). 
+ - First, download Laravel Homestead - https://laravel.com/docs/8.x/installation - and this github repository. I found this youtube tutorials helpful -https://www.youtube.com/watch?v=b3HLNJvVzNo&ab_channel=QuentinWattTutorials (watch parts 1-4). 
     - Setting up homestead.yaml can be tricky. I used this forum to get more clarity on the folder and site mappings: https://laravel.io/forum/05-16-2014-homestead-yaml-folder-mapping
- - Second, make your way into the Laravel project folder where the Book List Web App lives. Use this tutorial to get all setup: https://devmarketer.io/learn/setup-laravel-project-cloned-github-com/ (parts 1-10 are most relevant). 
+ - If you followed the above tutorial, you should now have run `vagrant ssh` and be in the virutal machine. You should see this on your terminal window: ![image](https://user-images.githubusercontent.com/60365163/97126303-d83f3700-170c-11eb-94d8-592aa4792181.png)
+ - You need to cd into the folder that holds the book list web app. Use this tutorial to get all setup: https://devmarketer.io/learn/setup-laravel-project-cloned-github-com/ (parts 4-10 are most relevant). 
+    - Before moving onto step 4 of devmarketer tutorial, you have to be in the vagrant virtual machine, as shown in the above youtube tutorial
     - Setting up the .env file can also be tricky. Make sure your DB_USERNAME=homestead and DB_PASSWORD=secret. 
     - Note, you can run either `php artisan migrate` or `php artisan migrate:refresh` for part 10. 
  - Lastly, run `php artisan serve` and go to the url given from the terminal.  
