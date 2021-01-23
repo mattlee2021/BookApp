@@ -1,5 +1,5 @@
 # Book List Web App
-This web app allows a user to add books to the user's own list. There are features such as searching for a book in your list by author or book title, sorting the list alphabetically by author or book title, exporting your list to a CSV or XML file, etc. The web app was built using Laravel 8.
+This web app allows a user to add books to the user's own list. There are features such as searching for a book in your list by author or book title, sorting the list alphabetically by author or book title, exporting your list to a CSV or XML file, etc. The web app was built using Laravel 8. This is my first Web App project.
 # Installation 
 To run the application, 
  - First, download Laravel Homestead - https://laravel.com/docs/8.x/installation - and this github repository. I found this youtube tutorials helpful -https://www.youtube.com/watch?v=b3HLNJvVzNo&ab_channel=QuentinWattTutorials (watch videos 1-4). 
