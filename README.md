@@ -19,8 +19,6 @@ To run the application,
  # Photos of Application 
  ![image](https://user-images.githubusercontent.com/60365163/97124669-657f8d00-1707-11eb-9a34-15e6d07114f3.png)
  ![image](https://user-images.githubusercontent.com/60365163/97124697-7a5c2080-1707-11eb-8bd3-da0675d61154.png)
- # Open Source Usage
- Feel free to clone this repository. Use it for learning, teaching, whatever you'd like. 
-
+ 
 
  
